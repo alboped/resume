@@ -1,0 +1,112 @@
+@import 'compass/css3';
+@import "compass/typography";
+
+body {
+	font-size: 1.1em;
+	font-family: 'Microsoft YaHei';
+	* {
+	    box-sizing: border-box;
+	}
+}
+
+//连接样式
+.a_link_red {
+	@include link-colors(#f98888);
+	text-decoration: none;
+	&:active {
+		color: #21AAEE;
+		text-decoration: underline;
+	}
+}
+
+/* 页面北京渐变颜色 */
+#login_page {
+	height: 100%;
+	background: -moz-linear-gradient(top, #E0E8F3, #E8E4E1) !important;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#E0E8F3), to(#E8E4E1)) !important;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#E0E8F3', EndColorStr='#E8E4E1')" !important;
+}
+
+//页面标题样式
+#login_header {
+	background: #21AAEE;
+	color: #fff;
+	text-shadow: none;
+}
+
+//LOGO样式
+#login_logo {
+	display: block;
+	margin: 1.5em auto;
+	width: 5em;
+}
+
+//账户密码输入框样式
+#username, #password {
+	padding: .9em .9em .9em 4em;
+	height: 3em;
+}
+
+//输入框图标
+.name_box label {
+	background: url(../img/login/username.png) no-repeat;
+}
+.pwd_box label {
+	background: url(../img/login/password.png) no-repeat;
+}
+.name_box, .pwd_box {
+	position: relative;
+	.name_label {
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		padding: .3em;
+		width: 3.3em;
+	}
+	label {
+		background-size: contain;
+		border-right: 1px solid #ccc;
+		width: 100%;
+		height: 80%;
+		margin-top: 10%;
+		margin-left: .5em;
+	}
+}
+
+//找回密码按钮样式
+#find_pwd {
+	display: block;
+	float: right;
+	font-size: .9em;
+	@extend .a_link_red;
+}
+
+//登录按钮样式
+#login_btn {
+	margin-top: 3em;
+	padding: .8em;
+	color: #fff;
+	text-shadow: none;
+	&, &:hover {
+		background: #69CD8D;
+		border: #69CD8D;
+	}
+	&:active {
+		background: #5dbb8a;
+		border: #5dbb8a;
+	}
+}
+
+//页脚样式
+#login_footer, #login_footer_tel {
+	position: absolute;
+	bottom: 1em;
+	width: 100%;
+	font-size: .8em;
+	text-align: center;
+}
+#login_footer_tel {
+	margin-bottom: .5em;
+	bottom: 0;
+}
