@@ -1,0 +1,397 @@
+@import 'compass/css3';
+@import "compass/typography";
+
+body {
+	font-family: helvetica;
+	font-size: 1.1em;
+	* {
+	    box-sizing: border-box;
+	}
+}
+
+//背景颜色
+.ui-page-theme-g {
+	background-color: #f5f5f5;
+}
+
+//灰色字体
+.font-huise {
+	color: hsl(0, 0, 60%);
+}
+
+//居中
+.text-center {
+	text-align: center;
+}
+
+//浮动
+.float-left {
+	float: left;
+}
+.float-right {
+	float: right;
+}
+	
+//高度100%
+.height100 {
+	height: 100%;
+}
+
+//旋转
+.rotate {
+	-webkit-transform: rotate(0deg) translateZ(0);
+	-webkit-transition-duration: 0ms;
+	-webkit-animation-name: loading;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
+
+/**
+ * 清除浮动
+ */
+.clearfix:after {
+	content: " ";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+//连接样式
+.date_nav {
+	@include link-colors(#333);
+	text-decoration: none;
+}
+
+//页面标题样式
+#main_header, #student_header {
+	background: #21AAEE;
+	color: #fff;
+	text-shadow: none;
+    border: 0;
+    h1.ui-title {
+    	padding: .5em 0;
+    }
+}
+
+@mixin main_icon($url){
+	background: url($url) no-repeat 0 0;
+	background-size: contain;
+	@include border-radius(0);
+}
+
+//图标
+.ui-icon-plan:after {
+	@include main_icon('../img/options/my_plan.png');
+}
+.ui-icon-order:after {
+	@include main_icon('../img/options/my_order.png');
+}
+.ui-icon-student:after {
+	@include main_icon('../img/options/student.png');
+}
+.ui-icon-mycenter:after {
+	@include main_icon('../img/options/my_center.png');
+}
+
+//图标选中样式
+.ui-icon-plan-link:after {
+	@include main_icon('../img/options/my_plan_link.png');
+}
+.ui-icon-order-link:after {
+	@include main_icon('../img/options/my_order_link.png');
+}
+.ui-icon-student-link:after {
+	@include main_icon('../img/options/student_link.png');
+}
+.ui-icon-mycenter-link:after {
+	@include main_icon('../img/options/my_center_link.png');
+}
+
+.page {
+	visibility: hidden;
+}
+
+//主页样式
+#main_page, #student_order {
+	height: 100%;
+	.ui-content {
+		position: relative;
+		padding: 0;
+		// min-height: inherit;
+		height: 100%;
+	}
+	.ui-footer {
+		background: #fff;
+	}
+	.ui-listview {
+		margin: 0;
+		.ui-btn {
+			background: #fff;
+		}
+	}
+	.ui-btn-f {
+		background: #fff;
+		border: 0;
+		&.ui-btn-active {
+			background: #fff;
+			border: 0;
+			color: #21AAEE;
+			text-shadow: 0 0 0 #fff;
+		}
+	}
+	.ui-btn-g {
+		background: #69CD8D;
+		color: #fff;
+		text-shadow: 0 0 0 #fff;
+		padding: .7em;
+		font-size: 1em;
+	}
+}
+
+//横向时间选择
+.plan_order_box {
+	height: 100%;
+	padding-top: 3em;
+}
+.datelist {
+	position: absolute;
+	top: 0;
+	z-index: 2;
+	width: 100%;
+	overflow: auto;
+	background-color: #fff;
+}
+.date_label_list {
+	width: 100%;
+	margin: 0;
+	background: #fff;
+	border-bottom: 1px solid #eee;
+	td {
+		font-size: .9em;
+		padding: .7em;
+	    border-bottom: 2px solid #fff;
+		a {
+			white-space: nowrap;
+			color: #333;
+		}
+		&.active {
+			a {
+				color: #21AAEE;
+			}
+			border-bottom: 2px solid #21AAEE;
+		}
+	}
+	.left_td, .right_td {
+		width: 3em;
+	}
+}
+%pullIcon {
+	display: block;
+	background: url(images/pull-icon@2x.png) 0 0 no-repeat;
+	background-size: cover;
+	margin: -0.7em;
+	width: 2em;
+	height: 2em;
+    @include transition-property(transform);
+}
+.pullLeftIcon {
+	@extend %pullIcon;
+	@include transform(rotate(-90deg));
+}
+.pullRightIcon {
+	@extend %pullIcon;
+	@include transform(rotate(90deg));
+}
+.flip {
+	@include transform(rotate(180deg));
+}
+.loading span {
+	@extend %pullIcon;
+	background-position: 0 100%;
+}
+
+//车辆计划列表
+.planList {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	font-size: .9em;
+	li {
+		background: #fff;
+		border-bottom: 1px solid #eee;
+		p {
+			line-height: 2.3em;
+			padding: 0 1em;
+			margin: 0;
+		}
+		.label_box {
+			padding: .5em;
+			.timelabel {
+				@include inline-block;
+				padding: .5em .6em;
+				margin: .3em .4em;
+				background: #59CC18;
+				color: #fff;
+				text-shadow: 0 0 0 #fff;
+			}
+		}
+	}
+	.order-li {
+		margin-bottom: .5em;
+		border: 0;
+	}
+}
+
+.loading-li {
+	background: #fff;
+	padding: 0;
+	color: #aaa;
+	span {
+		@include inline-block;
+	}
+}
+
+//虚线边框
+.border-top-dashed {
+	border-top: 1px dashed #ccc;
+}
+.border-bottom-dashed {
+	border-bottom: 1px dashed #ccc;
+}
+
+//预约状态 
+.order_state_n {
+	@include inline-block;
+	&:after {
+		color: hsl(350, 80%, 50%);
+		content: '未交费';
+	}
+}
+.order_state_y {
+	@include inline-block;
+	&:after {
+		color: hsl(130, 100%, 30%);
+		content: '已交费';
+	}
+}
+
+//取消预约按钮
+.cancel_order.ui-btn {
+	padding: .2em;
+	margin: 0;
+	margin-top: .25em;
+	color: hsl(350, 80%, 50%);
+	border: 1px solid hsl(350, 80%, 50%);
+    font-weight: normal;
+    background: #fff;
+	&:active, &:hover {
+		color: hsl(350, 80%, 50%);
+		border: 1px solid hsl(350, 80%, 50%);
+		background: #eee;
+		text-shadow: 0 0 0 #fff;
+	}
+}
+
+/**
+ * 学员
+ */
+.search_form_stu {
+	margin: 0 .5em;
+}
+
+#stu_list {
+	a.stu_item {
+		padding-top: 0.2em;
+		padding-bottom: 0.2em;
+	}
+	h2 {
+		font-size: 1.1em;
+	}
+	p {
+		font-size: .9em;
+		&.stu_mobile.ui-li-aside {
+			top: 50%;
+			margin-top: -0.5em;
+			right: 9em;
+			font-size: 1.1em;
+		}
+	}
+	.loading {
+	    line-height: 2.3em;
+	}
+}
+.ui-icon-backPage:after {
+	@include main_icon("
+data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22iso-8859-1%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20width%3D%2214px%22%20height%3D%2214px%22%20viewBox%3D%220%200%2014%2014%22%20style%3D%22enable-background%3Anew%200%200%2014%2014%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpolygon%20style%3D%22fill%3A%23FFFFFF%3B%22%20points%3D%2210.596%2C11.949%205.646%2C7%2010.596%2C2.05%208.475%2C-0.071%201.404%2C7%208.475%2C14.07%20%22%2F%3E%3C%2Fsvg%3E");	color: #fff;
+}
+#back_student {
+	background: initial;
+	border: 0;
+	color: #fff;
+	box-shadow: initial;
+	padding: 1.1em;
+}
+
+//个人中心
+#main_page .ui-listview.user_info {
+	background: #fff;
+	margin-top: .3em;
+	li {
+		border: 0;
+		border-bottom: 1px solid #eee;
+		font-size: 1.2em;
+		p {
+			margin: 0;
+		}
+	}
+}
+
+.photo_box {
+	background: url(../img/person_center/top_bg.png) no-repeat;
+	background-size: cover;
+	text-align: center;
+	img {
+		width: 4.5em;
+		height: 4.5em;
+		margin: 2.5em;
+		border: 3px solid #fff;
+	}
+}
+
+//个人中心图标
+.mc_icon {
+	@include inline-block;
+	width: 2em;
+	height: 1.4em;
+}
+.name_icon {
+	@include main_icon('../img/person_center/name_icon.png');
+}
+.job_number_icon {
+	@include main_icon('../img/person_center/job_number_icon.png');
+}
+.mobile_icon {
+	@include main_icon('../img/person_center/mobile_icon.png');
+}
+.dept_icon {
+	@include main_icon('../img/person_center/dept_icon.png');
+}
+.job_icon {
+	@include main_icon('../img/person_center/job_icon.png');
+}
+.driving_school_icon {
+	@include main_icon('../img/person_center/driving_school_icon.png');
+}
+.tel_icon {
+	@include main_icon('../img/person_center/tel_icon.png');
+}
+
+.mc_key, .mc_value {
+	vertical-align: middle;
+	@include inline-block;
+}
+.mc_key {
+	width: 5.5em;
+}
